@@ -47,3 +47,90 @@ repos:
           - --trailing-commas
           - --no-sort
         exclude: poetry.lock
+
+  # Python
+  ## Fixers
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.17.0
+    hooks:
+      - id: pyupgrade
+  - repo: https://github.com/PyCQA/autoflake
+    rev: v2.3.1
+    hooks:
+      - id: autoflake
+        name: autoflake
+        entry: autoflake
+        language: python
+        types: [python]
+        exclude: conftest.py
+        args:
+          - --in-place
+          - --remove-all-unused-imports
+          - --ignore-init-module-imports
+          - --remove-unused-variables
+        require_serial: true
+  - repo: https://github.com/asottile/yesqa
+    rev: v1.5.0
+    hooks:
+      - id: yesqa
+        additional_dependencies:
+          - flake8==7.1.1
+          - flake8-2020
+          - flake8-bugbear
+          - flake8-builtins
+          - flake8-comprehensions
+          - flake8-encodings
+          - flake8-implicit-str-concat
+          - flake8-new-union-types
+          - flake8-pep585
+          - flake8-simplify
+          - flake8-tidy-imports
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.1.1
+    hooks:
+      - id: flake8
+        additional_dependencies:
+          - flake8-2020
+          - flake8-bugbear
+          - flake8-builtins
+          - flake8-comprehensions
+          - flake8-encodings
+          - flake8-implicit-str-concat
+          - flake8-new-union-types
+          - flake8-pep585
+          - flake8-simplify
+          - flake8-tidy-imports
+  ## Formatters
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        name: isort (python)
+  - repo: https://github.com/psf/black
+    rev: 24.8.0
+    hooks:
+      - id: black
+  - repo: https://github.com/adamchainz/blacken-docs
+    rev: 1.18.0
+    hooks:
+      - id: blacken-docs
+        additional_dependencies:
+          - black==24.8.0
+  ## Linters
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.11.2
+    hooks:
+      - id: mypy
+        additional_dependencies:
+          - types-aiofiles
+          - types-python-dateutil
+          - types-requests
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: poetry run pylint
+        language: system
+        types: [python]
+        args:
+          - --rcfile=.pylintrc
