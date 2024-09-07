@@ -48,6 +48,15 @@ repos:
           - --no-sort
         exclude: poetry.lock
 
+  - repo: https://github.com/lovesegfault/beautysh
+    rev: v6.2.1
+    hooks:
+      - id: beautysh
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+      - id: shellcheck
+
   # Python
   ## Fixers
   - repo: https://github.com/asottile/pyupgrade
