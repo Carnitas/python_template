@@ -1,6 +1,13 @@
 ---
 repos:
   # Preconditions
+  - repo: https://github.com/floatingpurr/sync_with_poetry
+    rev: 1.1.0
+    hooks:
+      - id: sync_with_poetry
+        fail_fast: true
+        args:
+          - --db=poetry_to_pre_commit_mapping.json
   - repo: https://github.com/pre-commit/sync-pre-commit-deps
     rev: v0.0.1
     hooks:
