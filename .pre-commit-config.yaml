@@ -54,6 +54,12 @@ repos:
           - --trailing-commas
           - --no-sort
         exclude: poetry.lock
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.17
+    hooks:
+      - id: mdformat
+        args:
+          - --wrap=80
 
   - repo: https://github.com/lovesegfault/beautysh
     rev: v6.2.1
