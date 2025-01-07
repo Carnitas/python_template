@@ -8,7 +8,7 @@ repos:
         args:
           - --db=poetry_to_pre_commit_mapping.json
   - repo: https://github.com/pre-commit/sync-pre-commit-deps
-    rev: v0.0.1
+    rev: v0.0.2
     hooks:
       - id: sync-pre-commit-deps
         fail_fast: true
@@ -135,7 +135,7 @@ repos:
           - black==24.10.0
   ## Linters
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.14.0
+    rev: v1.14.1
     hooks:
       - id: mypy
         additional_dependencies:
